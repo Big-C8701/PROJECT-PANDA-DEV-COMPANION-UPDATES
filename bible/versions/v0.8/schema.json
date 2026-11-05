@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PROJECT P.A.N.D.A. source-derived Bible catalogue v0.8",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "canonical_file",
+    "canonical_sha256",
+    "document_version_note",
+    "source_blocks",
+    "ancillary_text",
+    "references"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "canonical_file": {
+      "const": "canonical/PROJECT_PANDA_REBIRTH_Game_Design_Bible_v0.8.md"
+    },
+    "canonical_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "document_version_note": {
+      "type": "string"
+    },
+    "source_blocks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/block"
+      }
+    },
+    "ancillary_text": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/reference"
+      }
+    }
+  },
+  "$defs": {
+    "implementationStatus": {
+      "enum": [
+        "NOT STARTED",
+        "IN PROGRESS",
+        "TESTING",
+        "COMPLETED",
+        "BLOCKED"
+      ]
+    },
+    "block": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "text"
+          ],
+          "properties": {
+            "kind": {
+              "const": "paragraph"
+            },
+            "text": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "rows"
+          ],
+          "properties": {
+            "kind": {
+              "const": "table"
+            },
+            "rows": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "member_ids",
+        "kind",
+        "section_id",
+        "title",
+        "description",
+        "design_status_text",
+        "design_status_source",
+        "source",
+        "body_blocks"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "member_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "kind": {
+          "enum": [
+            "section",
+            "reference",
+            "group"
+          ]
+        },
+        "section_id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "design_status_text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "design_status_source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "block",
+            "row"
+          ],
+          "properties": {
+            "block": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "row": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            }
+          }
+        },
+        "body_blocks": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    }
+  }
+}

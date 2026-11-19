@@ -1,7 +1,7 @@
 {
-  "bible_version": "0.10",
-  "catalogue_url": "https://raw.githubusercontent.com/Big-C8701/PROJECT-PANDA-DEV-COMPANION-UPDATES/main/bible/versions/v0.10/references.json",
-  "schema_url": "https://raw.githubusercontent.com/Big-C8701/PROJECT-PANDA-DEV-COMPANION-UPDATES/main/bible/versions/v0.10/schema.json",
+  "bible_version": "0.11",
+  "catalogue_url": "https://raw.githubusercontent.com/Big-C8701/PROJECT-PANDA-DEV-COMPANION-UPDATES/main/bible/versions/v0.11/references.json",
+  "schema_url": "https://raw.githubusercontent.com/Big-C8701/PROJECT-PANDA-DEV-COMPANION-UPDATES/main/bible/versions/v0.11/schema.json",
   "catalogue_schema_version": 1,
-  "catalogue_sha256": "935dd99cd0c3612348489110c0174c999da63148ed6cf5262b45f3b055df9c2d"
+  "catalogue_sha256": "12351de9373e787c3786d42317d1e958093571419adf42873b664fe638d7630d"
 }
